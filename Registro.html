@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Registro</title>
+	</head>
+	<body>
+		<h1>Formulario para la creación de una cuenta nueva</h1>
+		<form id="myForm">
+			<div>
+				<div>
+					<label for="nombre">Nombres</label>
+					<input type="text" placeholder="Introduzca sus nombres" id="nombre" required>
+				</div></br>
+				
+				<div>
+					<label for="apellidos">Apellidos</label>
+					<input type="text" placeholder="Introduzca sus apellidos" id="apellidos" required>
+				</div></br>
+
+				<div> 
+					<label for="edad">Edad</label>
+					<input type="number" placeholder="Seleccione la edad" id="edad" required>
+				</div></br>
+
+				<div>
+					<label for="fechaNacimiento">Fecha de nacimiento</label>
+					<input type="date" placeholder="Fecha de nacimiento" id="fechaNacimiento" required>
+				</div></br>
+
+				<div>
+					<label for="sexo">Sexo</label>
+
+					<input type="radio" id="masculino" name="sexo" value="masculino">
+					<label for="male">Masculino</label>
+					
+					<input type="radio" id="femenino" name="sexo" value="femenino">
+					<label for="female">Femenino</label>
+					
+					<input type="radio" id="otro" name="sexo" value="otro">
+					<label for="other">Otro</label> 
+				</div></br>
+
+				<div>
+					<label for="usuario">Usuario</label>
+					<input type="text" placeholder="Nombre de usuario" id="usuario" required>
+				</div></br>
+
+				<div>
+					<label for="psw">Contraseña</label>
+					<input type="password" placeholder="Contraseña" id="psw" required>
+				</div></br>
+
+				<div class="container">
+					<button type="button">Cancelar</button>
+					<button type="submit">Crear cuenta</button>
+				</div>
+
+				<div id="div" style="color: green;"></div>
+			</div>
+		</form>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="./js/Index.js"></script>
+	</body>
+</html>
