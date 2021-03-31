@@ -31,7 +31,6 @@
 }
 
 nav {
-    border: solid;
-    border-color: #fb6542;
+    border-top: thick solid #fb6542;
     border-width: 20px;
 }
