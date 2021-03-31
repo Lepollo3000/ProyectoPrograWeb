@@ -1,0 +1,37 @@
+﻿nav {
+    font-size: 1.2rem;
+}
+
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 1.2rem;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 1.4rem;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 1.6rem;
+    }
+}
+
+.nav-item {
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+#orangeLine {
+    width: 100%;
+    background-color: #fb6542;
+}
+
+nav {
+    border: solid;
+    border-color: #fb6542;
+    border-width: 20px;
+}

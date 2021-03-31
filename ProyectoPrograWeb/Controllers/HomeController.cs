@@ -23,6 +23,26 @@ namespace ProyectoPrograWeb.Controllers
             return View();
         }
 
+        public IActionResult BeforeAdopting()
+        {
+            return View();
+        }
+
+        public IActionResult Requirements()
+        {
+            return View();
+        }
+
+        public IActionResult Donations()
+        {
+            return View();
+        }
+
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
