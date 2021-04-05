@@ -1,5 +1,7 @@
 ﻿nav {
     font-size: 1.2rem;
+    border-top: thick solid #fb6542;
+    border-width: 20px;
 }
 
 @include media-breakpoint-up(sm) {
@@ -25,12 +27,18 @@
     padding-left: 2%;
 }
 
-#orangeLine {
-    width: 100%;
-    background-color: #fb6542;
+.btn-primary {
+    background-color: #fb6542 !important;
+    border-color: #c95236 !important;
 }
 
-nav {
-    border-top: thick solid #fb6542;
-    border-width: 20px;
+.nav-link {
+    border: hidden;
+    background-color: rgba(255, 0, 0, 0.0);
+}
+
+.nav-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
