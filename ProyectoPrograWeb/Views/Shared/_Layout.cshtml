@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/layoutStyles.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
+    @await RenderSectionAsync("Css", required: false)
 </head>
 <body>
     <header>
