@@ -1,0 +1,51 @@
+﻿.containerdiv {
+    float: left;
+    position: relative;
+}
+
+.cornerimage {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.textyeah {
+    margin-bottom: 40px;
+    margin-left: 25px;
+}
+
+.contenedor {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.container1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dogs {
+    width: 45%;
+    border: solid 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-color: red;
+    border-radius: 10px;
+}
+
+.dogs1 {
+    width: 45%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.text-start {
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+}
+
+.img {
+    
+}
