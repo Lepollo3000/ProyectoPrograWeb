@@ -1,0 +1,29 @@
+﻿.bar {
+    padding: 1%;
+    border-top: solid 4px #fb6542;
+    border-bottom: solid 4px #fb6542;
+    width: 99.1vw;
+    position: relative;
+    margin-left: -50vw;
+    left: 50%;
+}
+
+.btn-orange {
+    background-color: #fb6542;
+    color: white;
+}
+.container1 {
+    display: flex;
+    justify-content: space-around;
+}
+.dogs {
+    width: 25%;
+    border: solid 5px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-color: red;
+    border-radius: 10px;
+}
+.text-start {
+    font-family: verdana black;
+}
