@@ -10,6 +10,11 @@ namespace ProyectoPrograWeb.Controllers
     public class PetsController : Controller
     {
         // GET: MascotasController
+        public ActionResult AdoptRequirements()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
             return View();

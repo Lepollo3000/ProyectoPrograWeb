@@ -1,0 +1,29 @@
+﻿h3 {
+    color: rgb(76,181,245);
+}
+
+#indxhead {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#indexstories {
+    border: 1px solid gray;
+}
+
+#graysquare {
+    background-color: lightgray;
+}
+
+#indextitle {
+    color: orange;
+    font-size: 4vw;
+}
+
+#divblues {
+    height: 50px;
+    width: 100%;
+    background-color: rgb(76,181,245);
+    text-align: center;
+    color: white;
+}

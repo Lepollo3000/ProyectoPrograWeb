@@ -1,0 +1,63 @@
+﻿#header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/img/bfad1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 100%;
+}
+
+#header2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(/img/bfad5.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    width: 100%;
+}
+
+#headbfadtxt {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    color: white;
+}
+
+#textheader {
+    font-size: 20px;
+}
+
+
+#contimg {
+    width: 300px;
+    height: 300px;
+}
+
+#phead {
+   font-size: 150%;
+}
+
+#divblue {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(76,181,245);
+    text-align: center;
+    color: white;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 80%,
+        50% 100%,
+        0 80%
+        );
+}
+
+#texttb {
+    background-color: rgb(231,230,230);
+}
+
+ul, li {
+    text-align: left;
+}
+
+h5 {
+    text-align: center;
+}
