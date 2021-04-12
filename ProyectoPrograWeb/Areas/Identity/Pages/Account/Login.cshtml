@@ -1,16 +1,20 @@
 ﻿@page
 @model LoginModel
-
 @{
     ViewData["Title"] = "Log in";
 }
 
 <div class="row">
-    <div class="col-md-4 offset-4">
-        <h1>@ViewData["Title"]</h1>
+    <div class="row mb-3 mt-3">
+        <div class="col-md-9 offset-md-1 offset-0">
+            <img src="~/img/animals-register.png" width="100%" />
+        </div>
+    </div>
+    <div class="col-md-6 offset-1">
         <section>
             <form id="account" method="post">
-                <h4>Use a local account to log in.</h4>
+                <br class="mb-1" />
+                <h4>@ViewData["Title"]</h4>
                 <hr />
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -31,10 +35,10 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-6 offset-4 mb-3">
                     <button type="submit" class="btn btn-primary">Log in</button>
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <p>
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
@@ -47,6 +51,8 @@
                 </div>
             </form>
         </section>
+    </div>
+    <div class="col-md-3 col-10 offset-md-0 offset-1">
         <section>
             <h4>Use another service to log in.</h4>
             <hr />
@@ -65,10 +71,24 @@
                     <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                         <div>
                             <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                @{
+                                    foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        if (provider.Name == "Google")
+                                        {
+                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                                <i class="fa fa-google"></i> @provider.DisplayName
+                                            </button>
+                                        }
+                                        if (provider.Name == "Facebook")
+                                        {
+                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                                <i class="fa fa-facebook"></i> @provider.DisplayName
+                                            </button>
+                                        }
+                                    }
                                 }
+
                             </p>
                         </div>
                     </form>

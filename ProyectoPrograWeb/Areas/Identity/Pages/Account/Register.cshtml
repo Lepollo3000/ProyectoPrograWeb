@@ -11,9 +11,9 @@
         </div>
     </div>
     <div class="col-md-6 offset-1">
-        <h4 class="text-center">New User</h4>
-        <hr />
         <section>
+            <h4 class="text-center">New User</h4>
+            <hr />
             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
@@ -50,59 +50,61 @@
             </form>
         </section>
     </div>
-    <section class="col-md-3 col-10 offset-md-0 offset-1">
-        <h4 class="text-center">Join our community!</h4>
-        <hr />
-        <div class="text-justify">
-            <span>By joinning you will be able to:</span>
-            <ul>
-                <li>Apply to adopt the little ones who are anxiously waiting for a home.</li>
-                <li>Let your pets for adoption or even find the best companion for any friend.</li>
-                <li>Receive notifications of new animals and support the foundation.</li>
-            </ul>
-        </div>
+    <div class="col-md-3 col-10 offset-md-0 offset-1">
+        <section>
+            <h4 class="text-center">Join our community!</h4>
+            <hr />
+            <div class="text-justify">
+                <span>By joinning you will be able to:</span>
+                <ul>
+                    <li>Apply to adopt the little ones who are anxiously waiting for a home.</li>
+                    <li>Let your pets for adoption or even find the best companion for your friends.</li>
+                    <li>Receive notifications of new animals and support the foundation.</li>
+                </ul>
+            </div>
 
-        <h4>Use another service to register.</h4>
-        <hr />
-        @{
-            if ((Model.ExternalLogins?.Count ?? 0) == 0)
-            {
-                <div>
-                    <p>
-                        There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                        for details on setting up this ASP.NET application to support logging in via external services.
-                    </p>
-                </div>
-            }
-            else
-            {
-                <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
                     <div>
                         <p>
-                            @{
-                                foreach (var provider in Model.ExternalLogins)
-                                {
-                                    if (provider.Name == "Google")
-                                    {
-                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
-                                            <i class="fa fa-google"></i> @provider.DisplayName
-                                        </button>
-                                    }
-                                    if (provider.Name == "Facebook")
-                                    {
-                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
-                                            <i class="fa fa-facebook"></i> @provider.DisplayName
-                                        </button>
-                                    }
-                                }
-                            }
-
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
                         </p>
                     </div>
-                </form>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @{
+                                    foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        if (provider.Name == "Google")
+                                        {
+                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                                <i class="fa fa-google"></i> @provider.DisplayName
+                                            </button>
+                                        }
+                                        if (provider.Name == "Facebook")
+                                        {
+                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                                                <i class="fa fa-facebook"></i> @provider.DisplayName
+                                            </button>
+                                        }
+                                    }
+                                }
+
+                            </p>
+                        </div>
+                    </form>
+                }
             }
-        }
-    </section>
+        </section>
+    </div>
 </div>
 
 @section Scripts {
