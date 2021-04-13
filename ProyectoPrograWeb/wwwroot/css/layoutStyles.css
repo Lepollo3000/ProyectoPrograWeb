@@ -28,6 +28,11 @@
 }
 
 .btn-primary {
+    background-color: #fb6542 !important;
+    border-color: #bf4d32 !important;
+}
+
+.btn-secondary {
     background-color: #ffbb00 !important;
     border-color: #d99f00 !important;
 }
@@ -41,4 +46,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.list-unstyled {
+    font-family: verdana;
 }
