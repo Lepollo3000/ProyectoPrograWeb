@@ -4,6 +4,20 @@
     border-width: 20px;
 }
 
+.footer {
+    background-color: #7e7e7e;
+    bottom: auto !important;
+}
+
+.footer-bottom{
+    background-color: #616161;
+}
+
+.text-yellow {
+    color: #ffbb00;
+    font-weight: bold;
+}
+
 @include media-breakpoint-up(sm) {
     html {
         font-size: 1.2rem;
