@@ -1,480 +1,810 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
 
 }
 @section Css {
     <link href="~/css/adopStyle.css" rel="stylesheet" />
 }
+@section Scripts {
+    <script src="~/js/adoptScript.js"></script>
+}
 
-<img src="~/img/adop.jpg" class="img-fluid" alt="...">
+<img src="~/img/adop.jpg" class="img-fluid center" alt="...">
 <div class="bar">
     <form class="form-inline">
-        <div class="input-group w-100">
+        <div class="input-group w-100 mb-3">
             <input class="form-control" type="search" placeholder="what are you searching for? " aria-label="Search">
             <div class="input-group-append">
-                <button class="btn btn-orange" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
             </div>
+        </div>
+        <div class="input-group mr-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Select animal</label>
+            </div>
+            <select class="form-control custom-select">
+                <option value="" selected hidden>Animal (optional)</option>
+                <option value="Dogs">Dogs</option>
+                <option value="Cats">Cats</option>
+                <option value="Rabbbits">Rabbits</option>
+                <option value="Hamsters">Hamsters</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Select breed</label>
+            </div>
+            <select class="form-control custom-select">
+                <option value="" selected hidden>Breed (optional)</option>
+                <option value="Dogs">Dogs</option>
+                <option value="Cats">Cats</option>
+                <option value="Rabbbits">Rabbits</option>
+                <option value="Hamsters">Hamsters</option>
+            </select>
         </div>
     </form>
 </div>
 
+<div class="menu-blue my-4">
+    <h2 class="pt-4 font-weight-bold">Dogs</h2>
+</div>
 
-    <h2>Dogs</h2>
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    
-    <div class="col-md-4 col-10 mb-5">
+<div class="row row-cols-md-3 row-cols-1 g-4">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Chuchito.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Chuchito.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Chuchito</h5> 
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Chuchito</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: Chihuahua
-                    <br>Color: Light Brown
-                    <br>Age: 4 months
-                    <br>Weight: 2,700 kg
-                    <br>Sex: Male
-                    <br>It is a very affectionate ad playful puppy
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 4 months</li>
+                        <li>Description:<br />It is a very affectionate and playful puppy</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: Chihuahua
+                        <br>Color: Light Brown
+                        <br>
+                        <br>Weight: 2,700 kg
+                        <br>
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>            
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Oliver.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Oliver.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav ">Oliver</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Oliver</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: Mestizo/ Creole
-                    <br>color: Black with white chest
-                    <br>Age: 3 years
-                    <br>Weight: 7 kg
-                    <br>Sex: Male
-                    <br>A little suspicious but when he meers people he is very playful and affectionate.
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 3 years</li>
+                        <li>Description:<br />A little suspicious but when he meets people he is very playful and affectionate.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: Mestizo/ Creole
+                        <br>color: Black with white chest
+                        <br>Age: 3 years
+                        <br>Weight: 7 kg
+                        <br>Sex: Male
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Ambar.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Ambar.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Ambar</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Ambar</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: Meztizo/ Creole
-                    <br>Color: cream
-                    <br>Age: 1 year
-                    <br>Weight: 6,800 kg
-                    <br>Gender: Female
-                    <br>Quiet but very affectionate and loving
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 1 year</li>
+                        <li>Description:<br />Quiet but very affectionate and loving.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: Meztizo/ Creole
+                        <br>Color: cream
+                        <br>Age: 1 year
+                        <br>Weight: 6,800 kg
+                        <br>Gender:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Tosca.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Tosca.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Tosca</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Tosca</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: German Shepherd
-                    <br>Color: Dark brown with light brown
-                    <br>Age: 5 years
-                    <br>Weight: 9 kg
-                    <br>Gender: Female
-                    <br>A little shy so she needs a loving and caring family
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 5 years</li>
+                        <li>Description:<br />A little shy so she needs a loving and caring family.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: German Shepherd
+                        <br>Color: Dark brown with light brown
+                        <br>Age:
+                        <br>Weight: 9 kg
+                        <br>Gender: Female
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Canelo.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Canelo.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Canelo</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Canelo</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: Meztizo/ Creole
-                    <br>Color: Light brown
-                    <br>Age: 5 years
-                    <br>Weight: 19 kg
-                    <br>Sex: Male
-                    <br>He is very playful when you are paying attention to him
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 5 years</li>
+                        <li>Description:<br />He is very playful when you are paying attention to him.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: Meztizo/ Creole
+                        <br>Color: Light brown
+                        <br>Age: 5 years
+                        <br>Weight: 19 kg
+                        <br>Sex:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Venus.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Venus.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Venus</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Venus</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: Labrador Retriever
-                    <br>Color: Cream
-                    <br>Age: 4 years
-                    <br>Weight: 17 kg
-                    <br>Gender: Female
-                    <br>Very calm and very loving when there is trust.
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 4 years</li>
+                        <li>Description:<br />Very calm and very loving when there is trust.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: Labrador Retriever
+                        <br>Color: Cream
+                        <br>Age:
+                        <br>Weight: 17 kg
+                        <br>Gender:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Blaki.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Blaki.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Blaki</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Blaki</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: Meztizo/ Creole
-                    <br>Color: Black
-                    <br>Age: 7 years
-                    <br>Weight: 20 kg
-                    <br>Gender: Female
-                    <br>She is a very affectionate and loving dog.
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 7 years</li>
+                        <li>Description:<br />She is a very affectionate and loving dog.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: Meztizo/ Creole
+                        <br>Color: Black
+                        <br>Age:
+                        <br>Weight: 20 kg
+                        <br>Gender:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Tura.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Tura.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Tura</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Tura</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Breed: pitbull
-                    <br>Color: coffe with white on the chest
-                    <br>Age: 9 years
-                    <br>Weight: 20 kg
-                    <br>Gender: Female
-                    <br>He barks a lot when he does not know someone;<br> but in general she is very cute and affectionate.
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 7 years</li>
+                        <li>Description:<br />She barks a lot when he does not know someone, but in general she is very cute and affectionate.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Breed: pitbull
+                        <br>Color: coffe with white on the chest
+                        <br>Age: 9 years
+                        <br>Weight: 20 kg
+                        <br>Gender: Female
+                        <br>.
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
 </div>
 
-    <h2>Cats</h2>
-
+<div class="menu-blue my-4">
+    <h2 class="pt-4 font-weight-bold">Cats</h2>
+</div>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Toni.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Toni.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Toni</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Toni</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Meztizo - Cat
-                    <br>Color: Light gray with dark and soft gray on the chest
-                    <br>Age: 4 years
-                    <br>Weight: 3,800 kg
-                    <br>Sex: Male
-                    <br>A very affectionate and loving cat
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 4 years</li>
+                        <li>Description:<br />A very affectionate and loving cat.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Meztizo - Cat
+                        <br>Color: Light gray with dark and soft gray on the chest
+                        <br>Age:
+                        <br>Weight: 3,800 kg
+                        <br>Sex:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Kira.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Kira.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Kira</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Kira</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Other - Cat
-                    <br>Color: Honey
-                    <br>Age: 5 years
-                    <br>Weight: 5,600 kg
-                    <br>Gender: Female
-                    <br>A kitten that gains confidence from people very quickly and is very affectionate.
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 5 years</li>
+                        <li>Description:<br />A kitten that gains confidence from people very quickly and is very affectionate.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Other - Cat
+                        <br>Color: Honey
+                        <br>Age:
+                        <br>Weight: 5,600 kg
+                        <br>Gender:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Frijol.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Frijol.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Frijol</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Frijol</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Meztizo- cat
-                    <br>Color: black
-                    <br>Age: 3 years
-                    <br>Weight: 4,200 kg
-                    <br>Sex: Male
-                    <br>A very affectionate and playful cat when he gains confidence.
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 3 years</li>
+                        <li>Description:<br />A very affectionate and playful cat when he gains confidence.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Meztizo- cat
+                        <br>Color: black
+                        <br>Age:
+                        <br>Weight: 4,200 kg
+                        <br>Sex:
+                        <br>.
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Tito.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Tito.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Tito</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Tito</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Other - Cat
-                    <br>Color: Black
-                    <br>Age: 2 years
-                    <br>Weight: 3,100 kg
-                    <br>Sex: Male
-                    <br>He becomes defensive when he is unfamiliar but by gaining confidence he is very loving
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 2 years</li>
+                        <li>Description:<br />He becomes defensive when he is unfamiliar but by gaining confidence he is very loving.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Other - Cat
+                        <br>Color: Black
+                        <br>Age:
+                        <br>Weight: 3,100 kg
+                        <br>Sex:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
 </div>
 
-    <h2>Rabbit</h2>
-
+<div class="menu-blue my-4">
+    <h2 class="pt-4 font-weight-bold">Rabbits</h2>
+</div>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Bob.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Bob.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Bob</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Bob</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Californian
-                    <br>Color: Whithe with black nose and ears
-                    <br>Age: 1 year
-                    <br>Weight: 2,600 kg
-                    <br>Sex: Male
-                    <br>Very rare species in this country
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 1 year</li>
+                        <li>Description:<br />Very rare species in this country.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Californian
+                        <br>Color: Whithe with black nose and ears
+                        <br>Age:
+                        <br>Weight: 2,600 kg
+                        <br>Sex: Male
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Bunny.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Bunny.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Bunny</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Bunny</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Cinnamon
-                    <br>Color: Dark brown with light brown on the chest and ears
-                    <br>Age: 1 year
-                    <br>Weight: 3 kg
-                    <br>Sex: Male
-                    <br>It is very common but very affectionate and playful bunny
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 1 year</li>
+                        <li>Description:<br />It is very common but very affectionate and playful bunny.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Cinnamon
+                        <br>Color: Dark brown with light brown on the chest and ears
+                        <br>Age: 1 year
+                        <br>Weight: 3 kg
+                        <br>Sex: Male
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Bola.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Bola.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Bola</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Bola</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Borgoña
-                    <br>Color: light brown
-                    <br>Age: 3 years
-                    <br>Weight: 4 kg
-                    <br>Gender: Female
-                    <br>A very calm bunny with long ears
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 3 years</li>
+                        <li>Description:<br />It is very coA very calm bunny with long ears.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Borgoña
+                        <br>Color: light brown
+                        <br>Age:
+                        <br>Weight: 4 kg
+                        <br>Gender:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Negrito.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Negrito.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Negrito</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Negrito</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Habana
-                    <br>Color: Black
-                    <br>Age: 2 years
-                    <br>Weight: 3,700 kg
-                    <br>Sex: Male
-                    <br>A very eater rabbit but is very playful with people
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 2 years</li>
+                        <li>Description:<br />A very eater rabbit but is very playful with people.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Habana
+                        <br>Color: Black
+                        <br>Age:  years
+                        <br>Weight: 3,700 kg
+                        <br>Sex:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
 </div>
 
-    <h2>Hamster</h2>
-
+<div class="menu-blue my-4">
+    <h2 class="pt-4 font-weight-bold">Hamsters</h2>
+</div>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Bolita.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Bolita.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Bolita</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Bolita</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Dwarf hamster
-                    <br>Color: White
-                    <br>Age: 1 year
-                    <br>Weight: 500 g
-                    <br>Gender: Female
-                    <br>She is very special since she likes to be with people very much and is very loving
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Female</li>
+                        <li>Age: 1 year</li>
+                        <li>Description:<br />She is very special since she likes to be with people very much and is very loving.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Dwarf hamster
+                        <br>Color: White
+                        <br>Age:
+                        <br>Weight: 500 g
+                        <br>Gender:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Gordito.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Gordito.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Gordito</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Gordito</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Golden
-                    <br>Color: White with very ligth brown
-                    <br>Age: 1 year
-                    <br>Weight: 700 g
-                    <br>Sex: Male
-                    <br>It is very cuddly and plump
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 1 year</li>
+                        <li>Description:<br />It is very cuddly and plump.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Golden
+                        <br>Color: White with very ligth brown
+                        <br>Age: 1 year
+                        <br>Weight: 700 g
+                        <br>Sex:
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Chuck.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Chuck.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Chuck</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Chuck</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Dwarf hamster
-                    <br>Color: White
-                    <br>Age: 5 months
-                    <br>Weight: 300 g
-                    <br>Sex: Male
-                    <br>Despite being small, he is very imperative and playful
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 5 months</li>
+                        <li>Description:<br />Despite being small, he is very imperative and playful.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Dwarf hamster
+                        <br>Color: White
+                        <br>Age:
+                        <br>Weight: 300 g
+                        <br>Sex: Male
+                        <br>
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-10 mb-5">
+    <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
         <div class="card h-100">
-            <img src="~/img/Julio.png" class="card-img-top" alt="...">
+            <div class="card-header">
+                <img src="~/img/Julio.png" class="card-img-top" alt="...">
+            </div>
             <div class="card-body">
-                <h5 class="card-title fav">Julio</h5>
-                <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
-                <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                <div class="card-title text-center">
+                    <h5>Julio</h5>
+                </div>
+                @*
+                    <a href="#"><img src="~/img/cor.png" class="img-fluid" alt="..."></a>
+                    <a href="#"><img src="~/img/comp.png" class="img-fluid" alt="..."></a>
+                *@
                 <p class="card-text">
-                    Species: Golden
-                    <br>Color: Coffe with white on the chest
-                    <br>Age: 1 year
-                    <br>Weight: 600 g
-                    <br>Sex: Male
-                    <br>very correlon and cute.
+                    <ul class="list-unstyled text-justify mx-4">
+                        <li>Sex: Male</li>
+                        <li>Age: 1 year</li>
+                        <li>Description:<br />very correlon and cute.</li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    @*
+                        Species: Golden
+                        <br>Color: Coffe with white on the chest
+                        <br>Age:
+                        <br>Weight: 600 g
+                        <br>Sex: Male
+                        <br>.
+                    *@
                 </p>
             </div>
-            <div class="text-center">
-                <p></p>
-                <a href="#"><img src="~/img/botto.png" class="img-fluid" alt="..."></a>
+            <div class="card-footer text-center">
+                <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" alt="...">
             </div>
         </div>
     </div>

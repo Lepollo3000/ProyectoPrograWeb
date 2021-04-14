@@ -4,10 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Paws on ur heart</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
     <link href="~/css/layoutStyles.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
+
     @await RenderSectionAsync("Css", required: false)
 </head>
 <body>
@@ -50,13 +53,40 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Paws on ur heart - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer mt-4">
+        <div class="footer-top justify-content-center text-center mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="text-yellow">WANNA ADOPT?</div>
+                        <div>
+                            <a class="btn btn-secondary" asp-area="Identity"
+                               asp-page="/Account/Register">
+                                Sign up
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="text-yellow">HELP US CONTINUE CREATING SMILES</div>
+                        <div>
+                            <a class="btn btn-secondary" asp-area="Identity"
+                               asp-page="/Account/Register">
+                                Donations
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center text-white">
+            <div class="container ">
+                Rights reserved &copy; 2021 - Paws on ur heart Foundation
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -21,7 +21,7 @@ namespace ProyectoPrograWeb.Controllers
         }
 
         // GET: MascotasController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
             return View();
         }

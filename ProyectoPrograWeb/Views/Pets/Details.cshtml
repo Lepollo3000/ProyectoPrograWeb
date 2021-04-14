@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/petsDetails.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="row mt-4">
+        <div class="col align-content-center">
+            <h3 class="text-center">Contact us</h3>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-8 offset-2">
+            <ul class="text-justify">
+                <li>Your name and email will be taken from your account.</li>
+                <li>We are going to receive your message and you'll be notified if accepted or rejected.</li>
+                <li>If accepted, we'll try to fix an appointment to meet and interview you.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-2 align-content-center">
+        <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-10 offset-1">
+            <form>
+                <div class="form-group">
+                    <label>Cellphone</label>
+                    <input id="inputCellphone" name="cellphone" type="text"
+                           class="form-control" placeholder="Cellphone (optional)" />
+                </div>
+                <div class="form-group">
+                    <label>Reasons for adopting</label>
+                    <textarea id="inputReason" name="reason" rows="4" class="form-control"
+                              placeholder="Why do you wanna adopt?" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Place</label>
+                    <textarea id="inputWhereWho" name="whereWho" rows="4" class="form-control"
+                              placeholder="Where and with whom it'll live?" required></textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+</body>
+</html>

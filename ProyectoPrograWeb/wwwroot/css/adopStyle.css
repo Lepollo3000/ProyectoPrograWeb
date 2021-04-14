@@ -1,35 +1,62 @@
 ﻿.bar {
     padding: 1%;
+    border: solid 1px #dddddd;
     border-top: solid 4px #fb6542;
     border-bottom: solid 4px #fb6542;
+    /*
     width: 99.1vw;
     position: relative;
     margin-left: -50vw;
     left: 50%;
     margin-bottom: 50px;
+    */
 }
 
-.fav{
-    display:inline-flex;
+.fav {
+    display: inline-flex;
     padding: 10px;
 }
+
 .btn-orange {
     background-color: #fb6542;
     color: white;
 }
-
+/*
 .row {
     margin-bottom: 40px;
     line-height: 1.2;
 }
-
+*/
 .card {
-    border: solid 5px;
-    border-color: #fb6542;
+    border: solid 4px #fb6542;
     border-radius: 10px;
 }
 
 .card-text {
     margin-left: 10px !important;
     font-family: verdana;
+}
+
+.btnImage {
+    cursor: pointer;
+}
+
+.card-img-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
+    object-fit: cover;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.menu-blue {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(76,181,245);
+    text-align: center;
+    color: white;
+    clip-path: polygon(100% 0, 100% 70%, 50% 100%, 0 70%, 0 0);
 }
