@@ -57,7 +57,7 @@ header.triangle {
 }
 
 .card {
-    background: #fb6542;
+    background: #008f95;
     margin: 0 10px;
     width: calc(33% - 20px);
     height: 200px;
@@ -80,7 +80,7 @@ header.triangle {
 
 .card-icon {
     font-size: 28px;
-    background-color: #4cb5f5;
+    background-color: #e24e42;
     width: 60px;
     height: 60px;
     text-align: center;
@@ -208,7 +208,7 @@ h1 {
         padding: 15px 25px;
         color: #232323;
         float: left;
-        background: #fb6542;
+        background: #008f95;
         height: 50%;
         border-radius: 0 0 5px 5px;
         position: relative;
@@ -217,7 +217,7 @@ h1 {
 
         .profile-card-3 .card-content::before {
             content: '';
-            background: #fb6542;
+            background: #008f95;
             width: 120%;
             height: 100%;
             left: 11px;
@@ -232,8 +232,8 @@ h1 {
         position: absolute;
         bottom: 60%;
         left: 50%;
-        opacity: 1;
-        box-shadow: 4px 4px 22px red;
+        opacity: 1;  
+        box-shadow: 4px 4px 22px #e24e42;
         -webkit-transform: translate(-50%, 0%);
         transform: translate(-50%, 0%);
         z-index: 99999;
@@ -280,9 +280,9 @@ h1 {
         }
 
         .profile-card-3 .icon-block i {
-            color: #fb6542;
+            color: #e24e42;
             background-color: white;
-            border-color: #4cb5f5;
+            border-color: #e24e42;
         }
 
     .profile-card-3 i:hover {
@@ -308,7 +308,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #4cb5f5;
+    background: #e24e42;
 }
 
     .button:hover {
