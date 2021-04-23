@@ -18,6 +18,10 @@ section {
     clip-path: circle(120vh at 50% -50vh);
 }
 
+.home{
+    display: block !important;
+}
+
 section .content {
     max-width: 1000px;
     text-align: center;

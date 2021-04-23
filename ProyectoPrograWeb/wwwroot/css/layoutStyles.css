@@ -9,7 +9,7 @@
     bottom: auto !important;
 }
 
-.footer-bottom{
+.footer-bottom {
     background-color: #616161;
 }
 
@@ -33,6 +33,13 @@
 @include media-breakpoint-up(lg) {
     html {
         font-size: 1.6rem;
+    }
+}
+
+@media(max-width: 600px) {
+    .nav-item {
+        padding-right: 2%;
+        padding-left: 2%;
     }
 }
 
