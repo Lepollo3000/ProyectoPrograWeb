@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoPrograWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,13 @@ namespace ProyectoPrograWeb.Controllers
 {
     public class PetsController : Controller
     {
+        private readonly ProyectoPrograWebContext _dbcontext;
+
+        public PetsController(ProyectoPrograWebContext dbcontext)
+        {
+            _dbcontext = dbcontext;
+        }
+
         // GET: MascotasController
         public ActionResult AdoptRequirements()
         {
@@ -17,7 +25,9 @@ namespace ProyectoPrograWeb.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var Pets = _dbcontext.VPets;
+
+            return View(Pets);
         }
 
         // GET: MascotasController/Details/5

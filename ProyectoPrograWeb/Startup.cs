@@ -34,13 +34,21 @@ namespace ProyectoPrograWeb
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<ProyectoPrograWebContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDatabaseDeveloperPageExceptionFilter();
+
 
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<EmailOptions>(Configuration.GetSection("Email"));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //Scaffold-DbContext -Connection "Server=.\SQLEXPRESS;Database=PetsOnUrHeart;User Id=pouhSa;Password=Pa$$w0rd;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context ProyectoPrograWebContext -Tables Breed, Pet, Sex, Specie, StatusPet
 
             /*
             services.AddTransient<IEmailSender, EmailSender>();
