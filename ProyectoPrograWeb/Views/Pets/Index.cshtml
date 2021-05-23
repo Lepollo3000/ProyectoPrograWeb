@@ -4,117 +4,144 @@
 
 }
 @section Css {
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="~/css/adopStyle.css" rel="stylesheet" />
 }
 @section Scripts {
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="~/js/adoptScript.js"></script>
 }
 
 <img src="~/img/adop.jpg" class="img-fluid center" alt="...">
-<div class="bar">
-    <form class="form-inline">
+<div class="bar my-3 row">
+    <form class="form-inline justify-content-center">
         <div class="input-group w-100 mb-3">
             <input class="form-control" type="search" placeholder="what are you searching for? " aria-label="Search">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </div>
-        <div class="input-group mr-3">
+        <div class="input-group m-3 mt-0">
             <div class="input-group-prepend">
-                <label class="input-group-text">Select animal</label>
+                <label class="input-group-text">Animal Specie</label>
             </div>
-            <select class="form-control custom-select">
-                <option value="" selected hidden>Animal (optional)</option>
-                <option value="Dogs">Dogs</option>
-                <option value="Cats">Cats</option>
-                <option value="Rabbbits">Rabbits</option>
-                <option value="Hamsters">Hamsters</option>
+            <select id="specie" class="form-control custom-select">
+                <option value="" selected>All</option>
+                @{
+                    foreach (var specie in ViewBag.species)
+                    {
+                        <option value="@specie.NameSpecie">@specie.NameSpecie</option>
+                    }
+                }
             </select>
         </div>
-        <div class="input-group">
+        <div class="input-group m-3 mt-0">
             <div class="input-group-prepend">
                 <label class="input-group-text">Select breed</label>
             </div>
             <select class="form-control custom-select">
-                <option value="" selected hidden>Breed (optional)</option>
-                <option value="Dogs">Dogs</option>
-                <option value="Cats">Cats</option>
-                <option value="Rabbbits">Rabbits</option>
-                <option value="Hamsters">Hamsters</option>
+                <option value="" selected>All</option>
+                
+                @*
+                    <option value="Dogs">Dogs</option>
+                    <option value="Cats">Cats</option>
+                    <option value="Rabbbits">Rabbits</option>
+                    <option value="Hamsters">Hamsters</option>
+                *@
             </select>
+        </div>
+        <div class="input-group m-3 mt-0">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Age in</label>
+            </div>
+            <select id="typeAge" class="form-control custom-select">
+                <option value="" selected>Months and Years</option>
+                <option value="Month">Just Months</option>
+                <option value="Year">Just Years</option>
+            </select>
+        </div>
+        <div class="input-group m-3 mt-0">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Minimum Age</label>
+            </div>
+            <input id="minAge" class="form-control" type="number" />
+        </div>
+        <div class="input-group m-3 mt-0">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Maximum Age</label>
+            </div>
+            <input id="maxAge" class="form-control" type="number" />
         </div>
     </form>
 </div>
 
-<table id="example" class="table table-sm table-hover" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th></th>
-            <th>Sex</th>
-            <th>Age</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            foreach (var pet in Model)
-            {
+<div class="row offset-md-1 offset-sm-2 offset-2">
+    <div class="justify-content-center">
+        <table id="pets" class="table table-sm table-hover cards" cellspacing="0" width="100%">
+            <thead>
                 <tr>
-                    <td>@pet.NameSex</td>
-                    <td>
-                        @pet.AgePet
-                        @{
-                            if (pet.IsAgeMonth)
-                            {
-                                if (pet.AgePet == 1)
-                                {
-                                    <span>Month</span>
-                                }
-                                else
-                                {
-                                    <span>Months</span>
-                                }
-                            }
-                        }
-                    </td>
-                    <td>@pet.DescriptionPet</td>
-                    <td class="d-inline-block">
-                        <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
-                        <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" />
-                    </td>
+                    <th class="d-none">Specie</th>
+                    <th>Foto</th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Age</th>
+                    <th>Description</th>
+                    <th></th>
                 </tr>
-            }
-        }
-    </tbody>
-</table>
-
-@*
-    <div class="row row-cols-md-3 row-cols-1 g-4">
-        <div class="col-lg-4 col-md-5 col-10 offset-lg-0 offset-md-1 offset-1 mb-5">
-            <div class="card h-100">
-                <div class="card-header">
-                    <img src="~/img/Chuchito.png" class="card-img-top" alt="...">
-                </div>
-                <div class="card-body">
-                    <div class="card-title text-center">
-                        <h5>Chuchito</h5>
-                    </div>
-                    <p class="card-text">
-                        <ul class="list-unstyled text-justify mx-4">
-                            <li>Sex: Male</li>
-                            <li>Age: 4 months</li>
-                            <li>Description:<br />It is a very affectionate and playful puppy</li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </p>
-                </div>
-                <div class="card-footer text-center">
-                    <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
-                    <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt">
-                </div>
-            </div>
-        </div>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var pet in Model)
+                    {
+                        if (pet.IdStatusPet == 1)
+                        {
+                            <tr>
+                                <td class="d-none">@pet.NameSpecie</td>
+                                <td>
+                                    <img src="@pet.PhotoPathPet" class="card-img-top" alt="...">
+                                </td>
+                                @**@
+                                <td>Name: @pet.NamePet</td>
+                                <td>Sex: @pet.NameSex</td>
+                                <td>
+                                    Age: @pet.AgePet
+                                    @{
+                                        if (pet.IsAgeMonth)
+                                        {
+                                            if (pet.AgePet == 1)
+                                            {
+                                                <span>Month</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Months</span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (pet.AgePet == 1)
+                                            {
+                                                <span>Year</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Years</span>
+                                            }
+                                        }
+                                    }
+                                </td>
+                                <td class="">Energy: @pet.LevelName</td>
+                                <td class="d-inline">
+                                    <div class="row justify-content-center">
+                                        <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
+                                        <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" />
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
     </div>
-*@
+</div>

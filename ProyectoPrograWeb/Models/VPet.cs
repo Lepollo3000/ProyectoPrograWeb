@@ -13,7 +13,7 @@ namespace ProyectoPrograWeb.Models
         public string NameStatus { get; set; }
         public int IdPet { get; set; }
         public int IdSpeciePet { get; set; }
-        public int IdBreedPet { get; set; }
+        public int? IdBreedPet { get; set; }
         public int AgePet { get; set; }
         public bool IsAgeMonth { get; set; }
         public decimal WeightPet { get; set; }
@@ -22,5 +22,7 @@ namespace ProyectoPrograWeb.Models
         public string DescriptionPet { get; set; }
         public string PhotoPathPet { get; set; }
         public int IdStatusPet { get; set; }
+        public string LevelName { get; set; }
+        public int EnergyLevelId { get; set; }
     }
 }

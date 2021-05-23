@@ -26,6 +26,7 @@ namespace ProyectoPrograWeb.Controllers
         public ActionResult Index()
         {
             var Pets = _dbcontext.VPets;
+            ViewBag.species = _dbcontext.Species;
 
             return View(Pets);
         }

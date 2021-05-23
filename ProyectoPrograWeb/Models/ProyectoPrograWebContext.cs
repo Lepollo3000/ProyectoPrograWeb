@@ -18,6 +18,7 @@ namespace ProyectoPrograWeb.Models
         }
 
         public virtual DbSet<Breed> Breeds { get; set; }
+        public virtual DbSet<EnergyLevel> EnergyLevels { get; set; }
         public virtual DbSet<Pet> Pets { get; set; }
         public virtual DbSet<Sex> Sexes { get; set; }
         public virtual DbSet<Specie> Species { get; set; }
@@ -29,13 +30,13 @@ namespace ProyectoPrograWeb.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=PetsOnUrHeart;Trusted_Connection=true");
+                optionsBuilder.UseSqlServer("Server=.;Database=PetsOnUrHeart;User Id=sa2;Password=password;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Breed>(entity =>
             {
@@ -58,6 +59,17 @@ namespace ProyectoPrograWeb.Models
                     .HasForeignKey(d => d.IdSpecieRace)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Race_Specie");
+            });
+
+            modelBuilder.Entity<EnergyLevel>(entity =>
+            {
+                entity.HasKey(e => e.LevelId);
+
+                entity.ToTable("EnergyLevel");
+
+                entity.Property(e => e.LevelName)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Pet>(entity =>
@@ -98,6 +110,12 @@ namespace ProyectoPrograWeb.Models
                 entity.Property(e => e.WeightPet)
                     .HasColumnType("numeric(18, 3)")
                     .HasColumnName("weightPet");
+
+                entity.HasOne(d => d.EnergyLevel)
+                    .WithMany(p => p.Pets)
+                    .HasForeignKey(d => d.EnergyLevelId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Pet_EnergyLevel");
 
                 entity.HasOne(d => d.IdBreedPetNavigation)
                     .WithMany(p => p.Pets)
@@ -189,12 +207,16 @@ namespace ProyectoPrograWeb.Models
 
                 entity.Property(e => e.IsAgeMonth).HasColumnName("isAgeMonth");
 
-                entity.Property(e => e.NameBreed)
+                entity.Property(e => e.LevelName)
                     .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.NameBreed)
                     .HasMaxLength(50)
                     .HasColumnName("nameBreed");
 
                 entity.Property(e => e.NamePet)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("namePet");
 
@@ -211,6 +233,7 @@ namespace ProyectoPrograWeb.Models
                     .HasColumnName("nameStatus");
 
                 entity.Property(e => e.PhotoPathPet)
+                    .IsRequired()
                     .HasMaxLength(500)
                     .HasColumnName("photoPathPet");
 

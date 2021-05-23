@@ -15,10 +15,12 @@ namespace ProyectoPrograWeb.Models
         public decimal WeightPet { get; set; }
         public int IdSexPet { get; set; }
         public string NamePet { get; set; }
+        public int EnergyLevelId { get; set; }
         public string DescriptionPet { get; set; }
         public string PhotoPathPet { get; set; }
         public int IdStatusPet { get; set; }
 
+        public virtual EnergyLevel EnergyLevel { get; set; }
         public virtual Breed IdBreedPetNavigation { get; set; }
         public virtual Sex IdSexPetNavigation { get; set; }
         public virtual Specie IdSpeciePetNavigation { get; set; }
