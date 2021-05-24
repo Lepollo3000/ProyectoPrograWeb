@@ -42,6 +42,7 @@ namespace ProyectoPrograWeb.Areas.Identity.Pages.Account
             }
 
             Email = email;
+            DisplayConfirmAccountLink = true;
 
             if (DisplayConfirmAccountLink)
             {

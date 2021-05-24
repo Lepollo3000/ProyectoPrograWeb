@@ -1,4 +1,7 @@
-﻿@model IEnumerable<ProyectoPrograWeb.Models.VPet>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model IEnumerable<ProyectoPrograWeb.Models.VPet>
 @{
     ViewData["Title"] = "Index";
 
@@ -15,39 +18,24 @@
 <img src="~/img/adop.jpg" class="img-fluid center" alt="...">
 <div class="bar my-3 row">
     <form class="form-inline justify-content-center">
-        <div class="input-group w-100 mb-3">
-            <input class="form-control" type="search" placeholder="what are you searching for? " aria-label="Search">
+        <div class="input-group w-100 my-3 mx-5">
+            <input id="namePet" class="form-control" type="search" placeholder="Do you remember the name of this pet? Search it!" aria-label="Search">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </div>
         <div class="input-group m-3 mt-0">
             <div class="input-group-prepend">
-                <label class="input-group-text">Animal Specie</label>
-            </div>
-            <select id="specie" class="form-control custom-select">
-                <option value="" selected>All</option>
-                @{
-                    foreach (var specie in ViewBag.species)
-                    {
-                        <option value="@specie.NameSpecie">@specie.NameSpecie</option>
-                    }
-                }
-            </select>
-        </div>
-        <div class="input-group m-3 mt-0">
-            <div class="input-group-prepend">
                 <label class="input-group-text">Select breed</label>
             </div>
-            <select class="form-control custom-select">
+            <select id="breed" class="form-control custom-select">
                 <option value="" selected>All</option>
-                
-                @*
-                    <option value="Dogs">Dogs</option>
-                    <option value="Cats">Cats</option>
-                    <option value="Rabbbits">Rabbits</option>
-                    <option value="Hamsters">Hamsters</option>
-                *@
+                @{
+                    foreach (var breed in ViewBag.breed)
+                    {
+                        <option value="@breed.NameBreed">@breed.NameBreed</option>
+                    }
+                }
             </select>
         </div>
         <div class="input-group m-3 mt-0">
@@ -72,6 +60,24 @@
             </div>
             <input id="maxAge" class="form-control" type="number" />
         </div>
+        @{
+            if (SignInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole("admin"))
+                {
+                    <div class="input-group m-3 mt-0">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Status of Pet</label>
+                        </div>
+                        <select id="statusPet" class="form-control custom-select">
+                            <option value="" selected>All</option>
+                            <option value="Available">Available</option>
+                            <option value="In adoption process">In adoption process</option>
+                        </select>
+                    </div>
+                }
+            }
+        }
     </form>
 </div>
 
@@ -83,9 +89,11 @@
                     <th class="d-none">Specie</th>
                     <th>Foto</th>
                     <th>Name</th>
+                    <th>Breed</th>
                     <th>Sex</th>
                     <th>Age</th>
-                    <th>Description</th>
+                    <th>Energy</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
@@ -100,8 +108,8 @@
                                 <td>
                                     <img src="@pet.PhotoPathPet" class="card-img-top" alt="...">
                                 </td>
-                                @**@
-                                <td>Name: @pet.NamePet</td>
+                                <td class="d-none">@pet.NamePet</td>
+                                <td>Breed: @pet.NameBreed</td>
                                 <td>Sex: @pet.NameSex</td>
                                 <td>
                                     Age: @pet.AgePet
@@ -130,11 +138,22 @@
                                         }
                                     }
                                 </td>
-                                <td class="">Energy: @pet.LevelName</td>
-                                <td class="d-inline">
+                                <td>Energy: @pet.LevelName</td>
+                                <td class="d-none">@pet.NameStatus</td>
+                                <td class="d-inline-block">
                                     <div class="row justify-content-center">
-                                        <img src="~/img/botto1.png" class="img-fluid btnImage btnImageDetails" />
-                                        <img src="~/img/botto.png" class="img-fluid btnImage btnImageAdopt" />
+                                        <img src="~/img/bottoDetails.png" class="img-fluid btnImage btnImageDetails" />
+                                        <img src="~/img/bottoAdopt.png" class="img-fluid btnImage btnImageAdopt" />
+                                        @{
+                                            if (SignInManager.IsSignedIn(User))
+                                            {
+                                                if (User.IsInRole("admin"))
+                                                {
+                                                    <br />
+                                                    <img src="~/img/bottoEdit.png" class="img-fluid btnImage btnImageEdit" />
+                                                }
+                                            }
+                                        }
                                     </div>
                                 </td>
                             </tr>

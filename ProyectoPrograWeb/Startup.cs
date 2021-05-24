@@ -42,10 +42,11 @@ namespace ProyectoPrograWeb
             services.AddDatabaseDeveloperPageExceptionFilter();
 
 
-            services.AddTransient<IEmailSender, EmailSender>();
-            services.Configure<EmailOptions>(Configuration.GetSection("Email"));
+            //services.AddTransient<IEmailSender, EmailSender>();
+            //services.Configure<EmailOptions>(Configuration.GetSection("Email"));
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             //Scaffold-DbContext -Connection "Server=.\SQLEXPRESS;Database=PetsOnUrHeart;User Id=pouhSa;Password=Pa$$w0rd;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context ProyectoPrograWebContext -Tables Breed, Pet, Sex, Specie, StatusPet
@@ -74,7 +75,7 @@ namespace ProyectoPrograWeb
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext appdbcontext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext appdbcontext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -89,6 +90,8 @@ namespace ProyectoPrograWeb
             }
 
             //appdbcontext.Database.Migrate();
+            Init.CreateRoleIfNotExists(roleManager, "admin");
+            Init.CreateUserIfNotExistsAndAddRole(userManager, "admin@sistema.local", "Admin", "Proyect", "Pa55w.rd", "admin");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

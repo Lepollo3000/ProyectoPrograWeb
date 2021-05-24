@@ -8,20 +8,21 @@
             let min = parseInt($('#minAge').val(), 10);
             let max = parseInt($('#maxAge').val(), 10);
             let typeAge = $('#typeAge').val();
-            let specie = $('#specie').val();
 
-            let ageRow = (data[4] || 0).split(" ");
+            let ageRow = (data[5] || 0).split(" ");
             let typeAgeRow = ageRow[50];
             let age = parseFloat(ageRow[1]); // use data for the age column
             let kk = (typeAgeRow.includes(typeAge) || !typeAge);
 
-            if ((isNaN(min) && isNaN(max)) ||
+            if (
+                (isNaN(min) && isNaN(max)) ||
                 (isNaN(min) && age <= max) ||
                 (min <= age && isNaN(max) && (typeAgeRow.includes(typeAge) || !typeAge)) ||
-                (min <= age && age <= max) && (typeAgeRow.includes(typeAge) || !typeAge)) {
+                (min <= age && age <= max) && (typeAgeRow.includes(typeAge) || !typeAge)
+            ) {
                 return true;
             }
-            else if ()
+
             return false;
         }
     );
@@ -36,8 +37,16 @@
         table.draw();
     });
 
-    $('#specie').change(function () {
-        table.draw();
+    $('#breed').change(function () {
+        table.column(3).search($(this).val()).draw();
+    });
+
+    $('#namePet').change(function () {
+        table.column(2).search($(this).val()).draw();
+    });
+
+    $('#statusPet').change(function () {
+        table.column(7).search($(this).val()).draw();
     });
 
     let htmlSwal = `

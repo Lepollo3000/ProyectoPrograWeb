@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoPrograWeb.Models;
 using System;
@@ -11,6 +13,7 @@ namespace ProyectoPrograWeb.Controllers
     public class PetsController : Controller
     {
         private readonly ProyectoPrograWebContext _dbcontext;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public PetsController(ProyectoPrograWebContext dbcontext)
         {
@@ -23,10 +26,14 @@ namespace ProyectoPrograWeb.Controllers
             return View();
         }
 
-        public ActionResult Index()
+        [Authorize]
+        public ActionResult Index(int idSpecie)
         {
-            var Pets = _dbcontext.VPets;
+            var Pets = _dbcontext.VPets
+                .Where(p => p.IdSpeciePet == idSpecie);
             ViewBag.species = _dbcontext.Species;
+            ViewBag.breed = _dbcontext.Breeds
+                .Where(b => b.IdSpecieRace == idSpecie);
 
             return View(Pets);
         }

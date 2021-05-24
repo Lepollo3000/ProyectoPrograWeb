@@ -30,7 +30,18 @@
                             <a class="nav-link text-dark alert alert-light mb-0" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("Index", "Pets")">Adopt</a>
+                            <div class="dropdown ">
+                                <a class="nav-link text-dark alert alert-light dropdown-toggle mb-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Adopt
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 1 })">Dogs</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 2 })">Cats</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 4 })">Bunnies</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 3 })">Hamsters</a>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("BeforeAdopting", "Home")">Before Adopting</a>
