@@ -1,50 +1,220 @@
-﻿@{
-    Layout = null;
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model ProyectoPrograWeb.Models.VPet
+@{
+    ViewData["Title"] = "Pet Details";
+}
+@section Css {
+    <link href="~/css/adopStyle.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script>
+        let saveChangesURL = "@Url.Action("Edit")";
+        let adoptRequestURL = "@Url.Action("AdoptRequest")";
+    </script>
+    <script src="~/js/editScript.js"></script>
+
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link href="~/css/petsDetails.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="row mt-4">
-        <div class="col align-content-center">
-            <h3 class="text-center">Contact us</h3>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-8 offset-2">
-            <ul class="text-justify">
-                <li>Your name and email will be taken from your account.</li>
-                <li>We are going to receive your message and you'll be notified if accepted or rejected.</li>
-                <li>If accepted, we'll try to fix an appointment to meet and interview you.</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row mt-2 align-content-center">
-        <div class="col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-10 offset-1">
-            <form>
-                <div class="form-group">
-                    <label>Cellphone</label>
-                    <input id="inputCellphone" name="cellphone" type="text"
-                           class="form-control" placeholder="Cellphone (optional)" />
-                </div>
-                <div class="form-group">
-                    <label>Reasons for adopting</label>
-                    <textarea id="inputReason" name="reason" rows="4" class="form-control"
-                              placeholder="Why do you wanna adopt?" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Place</label>
-                    <textarea id="inputWhereWho" name="whereWho" rows="4" class="form-control"
-                              placeholder="Where and with whom it'll live?" required></textarea>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="details-body">
+    <div class="row">
+        <div class="col mt-5">
+            <img src="@Model.PhotoPathPet" class="img-fluid btnImage center" alt="image of pet" style="width:50%;" />
+            <br />
+            <div class="row">
+                @{
+                    if (SignInManager.IsSignedIn(User))
+                    {
+                        if (!(User.IsInRole("admin")))
+                        {
+                            <div class="col justify-content-center">
+                                <img src="~/img/bottoAdopt.png" class="img-fluid btnImage center btnImageAdopt" style="width:20%;" />
+                            </div>
+                        }
+                    }
+                }
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-</body>
-</html>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="bg-white">
+                <h4 class="text-center namePet"><b>@Model.NamePet</b></h4>
+
+                <div class="row justify-content-center">
+                    <div class="col text-right">@Model.NameSpecie</div>
+                    |
+                    <div class="col petStatus">@Model.NameStatus</div>
+                </div>
+
+                <hr />
+
+                <form id="editForm" method="post" action="@Url.Action("Edit")" enctype="multipart/form-data">
+                    <table class="table table-borderless text-justify">
+                        <tbody>
+                            <div>
+                                <input id="idPet" name="idPet" type="hidden" value="@Model.IdPet" />
+                                <div id="namePet" class="d-none">
+                                    <div class="input-group m-3 mt-0">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text">Name:</label>
+                                        </div>
+
+                                        <input id="name" name="namePet" class="form-control" placeholder="Name of pet" type="text" value="@Model.NamePet" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="input-group m-3 mt-0">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Breed:</label>
+                                </div>
+
+                                <select id="breed" name="breed" class="form-control custom-select" required disabled>
+                                    @{
+                                        foreach (var breed in ViewBag.breed)
+                                        {
+                                            if (breed.IdBreed == Model.IdBreedPet)
+                                            {
+                                                <option value="@breed.IdBreed" selected>@breed.NameBreed</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@breed.IdBreed">@breed.NameBreed</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="input-group m-3 mt-0">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Description:</label>
+                                </div>
+
+                                <textarea id="description" name="description" class="form-control" placeholder="Description of pet" rows="2" required disabled>
+@Model.DescriptionPet
+                                </textarea>
+                            </div>
+
+                            <div class="input-group m-3 mt-0">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Sex:</label>
+                                </div>
+
+                                <select id="sexPet" name="idsex" class="form-control custom-select" disabled>
+                                    @{
+                                        if (Model.NameSex == "Male")
+                                        {
+                                            <option value="1" selected>Male</option>
+                                            <option value="2">Female</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="1">Male</option>
+                                            <option value="2" selected>Female</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="input-group m-3 mt-0">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Age:</label>
+                                </div>
+
+                                <input id="age" name="age" class="form-control" placeholder="Age of pet" type="number" value="@Model.AgePet" required disabled />
+
+                                <div class="input-group-append">
+                                    <select id="isMonth" name="isMonth" class="form-control custom-select" disabled>
+                                        @{
+                                            if (Model.IsAgeMonth)
+                                            {
+                                                <option value="true" selected>Months</option>
+                                                <option value="false">Years</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="true">Months</option>
+                                                <option value="false" selected>Years</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group m-3 mt-0">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Weight:</label>
+                                </div>
+
+                                <input id="weight" name="weight" class="form-control" placeholder="Description of pet" type="number" value="@Model.WeightPet" required disabled />
+                            </div>
+
+                            <div class="input-group m-3 mt-0">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text">Mood:</label>
+                                </div>
+                                <select id="energyLevel" name="energyLevel" class="form-control custom-select" disabled>
+                                    @{
+                                        foreach (var mood in ViewBag.energyLevels)
+                                        {
+                                            if (Model.EnergyLevelId == mood.LevelId)
+                                            {
+                                                <option value="@mood.LevelId" selected>@mood.LevelName</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@mood.LevelId">@mood.LevelName</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </div>
+
+                            @{
+                                if (SignInManager.IsSignedIn(User))
+                                {
+                                    if (User.IsInRole("admin"))
+                                    {
+                                        <div class="input-group m-3 mt-0">
+                                            <label name="Photo" class="control-label"></label>
+                                            <div class="col">
+                                                <div class="custom-file">
+                                                    <input id="Photo" name="Photo" type="file" class="form-control custom-file-input" disabled>
+                                                    <label class="custom-file-label"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            }
+
+                            <div>
+                                <div id="btnEdit" class="d-none">
+                                    <div class="input-group m-3 mt-0 justify-content-center">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row justify-content-center">
+        <a href="@Url.Action("Index", new { idSpecie = Model.IdSpeciePet })" class="btn btn-primary mx-5">Go back to list</a>
+        @{
+            if (SignInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole("admin"))
+                {
+                    <button id="editPet" class="btn btn-primary mx-5">Edit Pet</button>
+                }
+            }
+        }
+    </div>
+</div>

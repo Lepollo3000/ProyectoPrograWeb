@@ -41,12 +41,24 @@
     cursor: pointer;
 }
 
+.details-body {
+    min-height: 61.8vh;
+}
+
+.input-group > .input-group-prepend {
+    flex: 0 0 20%;
+}
+
+.input-group .input-group-text {
+    width: 100%;
+}
+
 .card-img-top {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: auto;
-    width: 80%;
+    height: 225.6px;
+    width: 225.6px;
     object-fit: cover;
     margin-top: 5%;
     margin-bottom: 5%;

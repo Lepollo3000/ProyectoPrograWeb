@@ -49,7 +49,7 @@ namespace ProyectoPrograWeb
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            //Scaffold-DbContext -Connection "Server=.\SQLEXPRESS;Database=PetsOnUrHeart;User Id=pouhSa;Password=Pa$$w0rd;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context ProyectoPrograWebContext -Tables Breed, Pet, Sex, Specie, StatusPet
+            //Scaffold-DbContext -Connection "Server=.\SQLEXPRESS;Database=PetsOnUrHeart;Trusted_Connection=true" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context ProyectoPrograWebContext -Tables Breed, Pet, Sex, Specie, StatusPet, EnergyLevel, vPets, AdoptionRequest, vAdoptionUser -Force
 
             /*
             services.AddTransient<IEmailSender, EmailSender>();

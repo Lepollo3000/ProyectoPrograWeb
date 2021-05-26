@@ -1,0 +1,87 @@
+﻿@model ProyectoPrograWeb.Models.Pet
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-center">Create</h1>
+
+<h4 class="text-center">@ViewBag.nameSpecie</h4>
+<hr />
+<div class="row">
+    <div class="col-4 offset-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdSpeciePet" value="@ViewBag.specie" />
+            <div class="form-group">
+                <label asp-for="NamePet" class="control-label"></label>
+                <input asp-for="NamePet" class="form-control" required />
+                <span asp-validation-for="NamePet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdBreedPet" class="control-label"></label>
+                <select asp-for="IdBreedPet" class="form-control" asp-items="ViewBag.breed" required></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AgePet" class="control-label"></label>
+
+                <div class="input-group mb-3">
+                    <input asp-for="AgePet" class="form-control" placeholder="Age of pet" type="number" required />
+
+                    <div class="input-group-append">
+                        <select id="isMonth" class="form-control custom-select">
+                            <option value="true">Months</option>
+                            <option value="false">Years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <span asp-validation-for="AgePet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeightPet" class="control-label"></label>
+                <input asp-for="WeightPet" class="form-control" placeholder="weight in Kg." required />
+                <span asp-validation-for="WeightPet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdSexPet" class="control-label"></label>
+
+                <div class="input-group mb-3">
+                    <select asp-for="IdSexPet" class="form-control">
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnergyLevelId" class="control-label"></label>
+                <select asp-for="EnergyLevelId" class="form-control" asp-items="ViewBag.energyLevels" required></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionPet" class="control-label"></label>
+                <textarea asp-for="DescriptionPet" class="form-control" required></textarea>
+                <span asp-validation-for="DescriptionPet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label name="Photo" class="control-label"></label>
+                <div class="col-sm-10">
+                    <div class="custom-file">
+                        <input name="Photo" type="file" class="form-control custom-file-input" required>
+                        <label class="custom-file-label">Choose File...</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,68 +1,5 @@
 ﻿$(document).ready(function () {
-    $('form').on('submit', function (e) {
-        e.preventDefault();
-    });
-
-    $.fn.dataTable.ext.search.push(
-        function (settings, data, dataIndex) {
-            let min = parseInt($('#minAge').val(), 10);
-            let max = parseInt($('#maxAge').val(), 10);
-            let typeAge = $('#typeAge').val();
-
-            let ageRow = (data[5] || 0).split(" ");
-            let typeAgeRow = ageRow[3];
-            let age = parseFloat(ageRow[1]); // use data for the age column
-            let kk = (typeAgeRow.includes(typeAge) || !typeAge);
-
-            if (
-                (isNaN(min) && isNaN(max)) ||
-                (isNaN(min) && age <= max) ||
-                (min <= age && isNaN(max) && (typeAgeRow.includes(typeAge) || !typeAge)) ||
-                (min <= age && age <= max) && (typeAgeRow.includes(typeAge) || !typeAge)
-            ) {
-                return true;
-            }
-
-            return false;
-        }
-    );
-
-    let table = $('#pets').DataTable({
-        "sDom": "ltipr"
-    });
-
-    $('#minAge, #maxAge').change(function () {
-        table.draw();
-    });
-
-    $('#typeAge').change(function () {
-        table.column(5).search($(this).val()).draw();
-    });
-
-    $('#breed').change(function () {
-        table.column(3).search($(this).val()).draw();
-    });
-
-    $('#namePet').change(function () {
-        table.column(2).search($(this).val()).draw();
-    });
-
-    $('#statusPet').change(function () {
-        table.column(7).search($(this).val()).draw();
-    });
-
-    $('#sex').change(function () {
-        if ($(this).val() != '')
-            table.column(4).search("(^" + $(this).val() + "$)", true, false).draw();
-        else
-            table.column(4).search("", true, false).draw();
-    });
-
-
-    $('.btnImageAdopt').on('click', function () {
-        let idPet = $(this).attr('idPet');
-
-        let htmlSwal = `
+    let htmlSwal = `
     <div class="row mt-2">
         <div class="col-8 mx-auto">
             <ul class="text-justify">
@@ -76,7 +13,6 @@
     <div class="row align-content-center">
         <div class="col-10 offset-1">
             <form id="formAdopt">
-                <input id="idPet" type="hidden" value="${ idPet }" />
                 <div class="form-group">
                     <input id="inputCellphone" name="cellphone" type="text"
                            class="form-control" onkeypress="return onlyNumberKey(event)" 
@@ -97,6 +33,8 @@
         </div>
     </div>
     `;
+
+    $('.btnImageAdopt').on('click', function () {
         Swal.fire({
             title: 'Adopt',
             html: htmlSwal,
@@ -127,7 +65,7 @@
                 success: function (data) {
                     swalOSuccess(data);
 
-                    $('.pet-' + idPet).remove();
+                    $('.petStatus').html('In adoption process');
                 },
                 error: function (data, textStatus, errorThrown) {
                     //VENTANA ERROR
@@ -135,6 +73,79 @@
                 }
             });
         });
+    });
+    /*
+    $('#editForm').on('submit', function (e) {
+        e.preventDefault();
+
+        let idPet = $('#idPet').val();
+        let namePet = $('#name').val();
+        let sex = $('#sexPet').val();
+        let weight = $('#weight').val();
+        let isMonth = $('#isMonth').val();
+        let energyLevel = $('#energyLevel').val();
+        let age = $('#age').val();
+        let breed = $('#breed').val();
+
+        var file_data = $('#Photo').prop('files')[0];
+        var form_data = new FormData($(this));
+        form_data.append('file', file_data);
+
+        alert(form_data); 
+
+        $.ajax({
+            url: saveChangesURL,
+            data: {
+                Photo: file_data,
+                idPet: idPet,
+                namePet: namePet,
+                idSex: sex,
+                weight: weight,
+                isMonth: isMonth,
+                energyLevel: energyLevel,
+                age: age,
+                breed: breed
+            },
+            type: 'post',
+            datatype: 'text',
+            async: false,
+            processData: false,
+            success: function (data) {
+                swalOSuccess(data);
+
+                $('.namePet').html(namePet);
+
+                $('#btnEdit').addClass('d-none');
+                $('#namePet').addClass('d-none');
+
+                $('#breed').prop("disabled", true);
+                $('#Photo').prop("disabled", true);
+                $('#description').prop("disabled", true);
+                $('#sexPet').prop("disabled", true);
+                $('#age').prop("disabled", true);
+                $('#weight').prop("disabled", true);
+                $('#isMonth').prop("disabled", true);
+                $('#energyLevel').prop("disabled", true);
+            },
+            error: function (data, textStatus, errorThrown) {
+                //VENTANA ERROR
+                swalOError(data.responseJSON);
+            }
+        });
+    });*/
+
+    $('#editPet').on('click', function () {
+        $('#btnEdit').removeClass('d-none');
+        $('#namePet').removeClass('d-none');
+
+        $('#breed').prop("disabled", false);
+        $('#Photo').prop("disabled", false);
+        $('#description').prop("disabled", false);
+        $('#sexPet').prop("disabled", false);
+        $('#age').prop("disabled", false);
+        $('#weight').prop("disabled", false);
+        $('#isMonth').prop("disabled", false);
+        $('#energyLevel').prop("disabled", false);
     });
 });
 

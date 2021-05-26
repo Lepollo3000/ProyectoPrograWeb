@@ -17,12 +17,14 @@ namespace ProyectoPrograWeb.Models
         {
         }
 
+        public virtual DbSet<AdoptionRequest> AdoptionRequests { get; set; }
         public virtual DbSet<Breed> Breeds { get; set; }
         public virtual DbSet<EnergyLevel> EnergyLevels { get; set; }
         public virtual DbSet<Pet> Pets { get; set; }
         public virtual DbSet<Sex> Sexes { get; set; }
         public virtual DbSet<Specie> Species { get; set; }
         public virtual DbSet<StatusPet> StatusPets { get; set; }
+        public virtual DbSet<VAdoptionUser> VAdoptionUsers { get; set; }
         public virtual DbSet<VPet> VPets { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,13 +32,45 @@ namespace ProyectoPrograWeb.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.;Database=PetsOnUrHeart;User Id=sa2;Password=password;");
+                optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=PetsOnUrHeart;Trusted_Connection=true");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
+
+            modelBuilder.Entity<AdoptionRequest>(entity =>
+            {
+                entity.HasKey(e => e.IdAdoptionRequest);
+
+                entity.ToTable("AdoptionRequest");
+
+                entity.Property(e => e.IdAdoptionRequest).HasColumnName("idAdoptionRequest");
+
+                entity.Property(e => e.CellphoneUser)
+                    .HasMaxLength(50)
+                    .HasColumnName("cellphoneUser");
+
+                entity.Property(e => e.IdPet).HasColumnName("idPet");
+
+                entity.Property(e => e.IdStatusPet).HasColumnName("idStatusPet");
+
+                entity.Property(e => e.IdUser)
+                    .IsRequired()
+                    .HasMaxLength(450)
+                    .HasColumnName("idUser");
+
+                entity.Property(e => e.ReasonAdoption)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("reasonAdoption");
+
+                entity.Property(e => e.WhereWhoAdoption)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("whereWhoAdoption");
+            });
 
             modelBuilder.Entity<Breed>(entity =>
             {
@@ -181,6 +215,80 @@ namespace ProyectoPrograWeb.Models
                     .IsRequired()
                     .HasMaxLength(50)
                     .HasColumnName("nameStatus");
+            });
+
+            modelBuilder.Entity<VAdoptionUser>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vAdoptionUser");
+
+                entity.Property(e => e.AgePet).HasColumnName("agePet");
+
+                entity.Property(e => e.CellphoneUser)
+                    .HasMaxLength(50)
+                    .HasColumnName("cellphoneUser");
+
+                entity.Property(e => e.Email).HasMaxLength(256);
+
+                entity.Property(e => e.IdAdoptionRequest).HasColumnName("idAdoptionRequest");
+
+                entity.Property(e => e.IdBreedPet).HasColumnName("idBreedPet");
+
+                entity.Property(e => e.IdPet).HasColumnName("idPet");
+
+                entity.Property(e => e.IdSexPet).HasColumnName("idSexPet");
+
+                entity.Property(e => e.IdSpeciePet).HasColumnName("idSpeciePet");
+
+                entity.Property(e => e.IdStatusPet).HasColumnName("idStatusPet");
+
+                entity.Property(e => e.IdUser)
+                    .IsRequired()
+                    .HasMaxLength(450)
+                    .HasColumnName("idUser");
+
+                entity.Property(e => e.IsAgeMonth).HasColumnName("isAgeMonth");
+
+                entity.Property(e => e.NameBreed)
+                    .HasMaxLength(50)
+                    .HasColumnName("nameBreed");
+
+                entity.Property(e => e.NamePet)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("namePet");
+
+                entity.Property(e => e.NameSex)
+                    .HasMaxLength(50)
+                    .HasColumnName("nameSex");
+
+                entity.Property(e => e.NameSpecie)
+                    .HasMaxLength(50)
+                    .HasColumnName("nameSpecie");
+
+                entity.Property(e => e.NameStatus)
+                    .HasMaxLength(50)
+                    .HasColumnName("nameStatus");
+
+                entity.Property(e => e.PhotoPathPet)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("photoPathPet");
+
+                entity.Property(e => e.ReasonAdoption)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("reasonAdoption");
+
+                entity.Property(e => e.WeightPet)
+                    .HasColumnType("numeric(18, 3)")
+                    .HasColumnName("weightPet");
+
+                entity.Property(e => e.WhereWhoAdoption)
+                    .IsRequired()
+                    .HasMaxLength(500)
+                    .HasColumnName("whereWhoAdoption");
             });
 
             modelBuilder.Entity<VPet>(entity =>

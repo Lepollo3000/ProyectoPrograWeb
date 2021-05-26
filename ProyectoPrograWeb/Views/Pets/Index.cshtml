@@ -3,7 +3,7 @@
 @inject UserManager<ApplicationUser> UserManager
 @model IEnumerable<ProyectoPrograWeb.Models.VPet>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pets List";
 
 }
 @section Css {
@@ -12,6 +12,9 @@
 }
 @section Scripts {
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        let adoptRequestURL = "@Url.Action("AdoptRequest")";
+    </script>
     <script src="~/js/adoptScript.js"></script>
 }
 
@@ -36,6 +39,16 @@
                         <option value="@breed.NameBreed">@breed.NameBreed</option>
                     }
                 }
+            </select>
+        </div>
+        <div class="input-group m-3 mt-0">
+            <div class="input-group-prepend">
+                <label class="input-group-text">Select sex</label>
+            </div>
+            <select id="sex" class="form-control custom-select">
+                <option value="" selected>All</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
             </select>
         </div>
         <div class="input-group m-3 mt-0">
@@ -75,9 +88,13 @@
                             <option value="In adoption process">In adoption process</option>
                         </select>
                     </div>
+                    <div class="row">
+                        <a class="btn btn-primary" href="@Url.Action("Create", new { idSpecie = Model.FirstOrDefault().IdSpeciePet })">Register New Pet</a>
+                    </div>
                 }
             }
         }
+
     </form>
 </div>
 
@@ -103,38 +120,30 @@
                     {
                         if (pet.IdStatusPet == 1)
                         {
-                            <tr>
+                            <tr class="pet-@pet.IdPet">
                                 <td class="d-none">@pet.NameSpecie</td>
                                 <td>
                                     <img src="@pet.PhotoPathPet" class="card-img-top" alt="...">
                                 </td>
                                 <td class="d-none">@pet.NamePet</td>
                                 <td>Breed: @pet.NameBreed</td>
-                                <td>Sex: @pet.NameSex</td>
+                                <td>@pet.NameSex</td>
                                 <td>
                                     Age: @pet.AgePet
                                     @{
                                         if (pet.IsAgeMonth)
                                         {
                                             if (pet.AgePet == 1)
-                                            {
-                                                <span>Month</span>
-                                            }
+                                            { <span>Month</span> }
                                             else
-                                            {
-                                                <span>Months</span>
-                                            }
+                                            { <span>Months</span> }
                                         }
                                         else
                                         {
                                             if (pet.AgePet == 1)
-                                            {
-                                                <span>Year</span>
-                                            }
+                                            { <span>Year</span> }
                                             else
-                                            {
-                                                <span>Years</span>
-                                            }
+                                            { <span>Years</span> }
                                         }
                                     }
                                 </td>
@@ -142,21 +151,72 @@
                                 <td class="d-none">@pet.NameStatus</td>
                                 <td class="d-inline-block">
                                     <div class="row justify-content-center">
-                                        <img src="~/img/bottoDetails.png" class="img-fluid btnImage btnImageDetails" />
-                                        <img src="~/img/bottoAdopt.png" class="img-fluid btnImage btnImageAdopt" />
+                                        <a href="@Url.Action("Details", new { idPet = pet.IdPet })"><img src="~/img/bottoDetails.png" class="img-fluid btnImage btnImageDetails" /></a>
                                         @{
                                             if (SignInManager.IsSignedIn(User))
                                             {
-                                                if (User.IsInRole("admin"))
+                                                if (!(User.IsInRole("admin")))
                                                 {
-                                                    <br />
-                                                    <img src="~/img/bottoEdit.png" class="img-fluid btnImage btnImageEdit" />
+                                                    <img src="~/img/bottoAdopt.png" class="img-fluid btnImage btnImageAdopt" idPet="@pet.IdPet" />
                                                 }
                                             }
                                         }
                                     </div>
                                 </td>
                             </tr>
+                        }
+                        else
+                        {
+                            if (SignInManager.IsSignedIn(User))
+                            {
+                                if (User.IsInRole("admin"))
+                                {
+                                    <tr class="pet-@pet.IdPet">
+                                        <td class="d-none">@pet.NameSpecie</td>
+                                        <td>
+                                            <img src="@pet.PhotoPathPet" class="card-img-top" alt="...">
+                                        </td>
+                                        <td class="d-none">@pet.NamePet</td>
+                                        <td>Breed: @pet.NameBreed</td>
+                                        <td>@pet.NameSex</td>
+                                        <td>
+                                            Age: @pet.AgePet
+                                            @{
+                                                if (pet.IsAgeMonth)
+                                                {
+                                                    if (pet.AgePet == 1)
+                                                    { <span>Month</span> }
+                                                    else
+                                                    { <span>Months</span> }
+                                                }
+                                                else
+                                                {
+                                                    if (pet.AgePet == 1)
+                                                    { <span>Year</span> }
+                                                    else
+                                                    { <span>Years</span> }
+                                                }
+                                            }
+                                        </td>
+                                        <td>Energy: @pet.LevelName</td>
+                                        <td class="d-none">@pet.NameStatus</td>
+                                        <td class="d-inline-block">
+                                            <div class="row justify-content-center">
+                                                <a href="@Url.Action("Details", new { idPet = pet.IdPet })"><img src="~/img/bottoDetails.png" class="img-fluid btnImage btnImageDetails" /></a>
+                                                @{
+                                                    if (SignInManager.IsSignedIn(User))
+                                                    {
+                                                        if (!(User.IsInRole("admin")))
+                                                        {
+                                                            <img src="~/img/bottoAdopt.png" class="img-fluid btnImage btnImageAdopt" idPet="@pet.IdPet" />
+                                                        }
+                                                    }
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            }
                         }
                     }
                 }
