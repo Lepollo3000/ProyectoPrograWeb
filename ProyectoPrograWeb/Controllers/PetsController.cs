@@ -40,6 +40,7 @@ namespace ProyectoPrograWeb.Controllers
             ViewBag.species = _dbcontext.Species;
             ViewBag.breed = _dbcontext.Breeds
                 .Where(b => b.IdSpecieRace == idSpecie);
+            ViewBag.idSpecie = idSpecie;
 
             return View(pets);
         }

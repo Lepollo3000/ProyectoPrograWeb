@@ -27,7 +27,6 @@ namespace ProyectoPrograWeb
 
         public IConfiguration Configuration { get; }
 
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -40,7 +39,6 @@ namespace ProyectoPrograWeb
                     Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
-
 
             //services.AddTransient<IEmailSender, EmailSender>();
             //services.Configure<EmailOptions>(Configuration.GetSection("Email"));
@@ -58,6 +56,7 @@ namespace ProyectoPrograWeb
 
             services.AddControllersWithViews();
             //Paws on ur heart
+            /*
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
@@ -72,10 +71,11 @@ namespace ProyectoPrograWeb
                     facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
                     facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
                 });
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext appdbcontext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext appdbcontext, ProyectoPrograWebContext dbcontext, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -89,9 +89,9 @@ namespace ProyectoPrograWeb
                 app.UseHsts();
             }
 
-            //appdbcontext.Database.Migrate();
-            Init.CreateRoleIfNotExists(roleManager, "admin");
-            Init.CreateUserIfNotExistsAndAddRole(userManager, "admin@sistema.local", "Admin", "Proyect", "Pa55w.rd", "admin");
+            Init.tryToMigrate(dbcontext, appdbcontext);
+            Init.tryCreateDefaultUsersAndRoles(userManager, roleManager);
+            Init.trySeedDefaultData(dbcontext);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

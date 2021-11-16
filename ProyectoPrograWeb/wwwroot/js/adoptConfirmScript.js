@@ -91,5 +91,6 @@ function swalOSuccess(text) {
         showConfirmButton: true,
         showCancelButton: false,
         showCloseButton: true,
+        onClose: () => { location.reload(); }
     });
 }

@@ -33,34 +33,39 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark alert alert-light mb-0" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <div class="dropdown ">
-                                <a class="nav-link text-dark alert alert-light dropdown-toggle mb-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Adopt
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 1 })">Dogs</a>
-                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 2 })">Cats</a>
-                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 4 })">Bunnies</a>
-                                    <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 3 })">Hamsters</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("BeforeAdopting", "Home")">Before Adopting</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("ContactUs", "Home")">Contact Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="text-dark alert alert-danger mb-0" href="@Url.Action("Donations", "Home")">Donations</a>
-                        </li>
                         @{
                             if (SignInManager.IsSignedIn(User))
                             {
                                 if (User.IsInRole("admin"))
                                 {
+                                    <li class="nav-item">
+                                        <div class="dropdown ">
+                                            <a class="nav-link text-dark alert alert-light dropdown-toggle mb-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Register New Pet
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item" href="@Url.Action("Create", "Pets", new { idSpecie = 1 })">Dog</a>
+                                                <a class="dropdown-item" href="@Url.Action("Create", "Pets", new { idSpecie = 3 })">Cat</a>
+                                                <a class="dropdown-item" href="@Url.Action("Create", "Pets", new { idSpecie = 4 })">Bunny</a>
+                                                <a class="dropdown-item" href="@Url.Action("Create", "Pets", new { idSpecie = 2 })">Hamster</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="dropdown ">
+                                            <a class="nav-link text-dark alert alert-light dropdown-toggle mb-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                List of Pets
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 1 })">Dogs</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 3 })">Cats</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 4 })">Bunnies</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 2 })">Hamsters</a>
+                                            </div>
+                                        </div>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("AdoptionConfirm", "Pets")">Confirm Adoptions</a>
                                     </li>
@@ -68,8 +73,34 @@
                                 else
                                 {
                                     <li class="nav-item">
+                                        <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("BeforeAdopting", "Home")">Before Adopting</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("ContactUs", "Home")">Contact Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <div class="dropdown ">
+                                            <a class="nav-link text-dark alert alert-light dropdown-toggle mb-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Adopt
+                                            </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 1 })">Dogs</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 3 })">Cats</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 4 })">Bunnies</a>
+                                                <a class="dropdown-item" href="@Url.Action("Index", "Pets", new { idSpecie = 2 })">Hamsters</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @*
+                    <li class="nav-item">
+                        <a class="text-dark alert alert-danger mb-0" href="@Url.Action("Donations", "Home")">Donations</a>
+                    </li>
+                                    *@
+                                    <li class="nav-item">
                                         <a class="nav-link text-dark alert alert-light mb-0" href="@Url.Action("AdoptionConfirm", "Pets")">My Adoption Requests</a>
                                     </li>
+
                                 }
                             }
                         }

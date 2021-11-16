@@ -89,7 +89,7 @@
                         </select>
                     </div>
                     <div class="row">
-                        <a class="btn btn-primary" href="@Url.Action("Create", new { idSpecie = Model.FirstOrDefault().IdSpeciePet })">Register New Pet</a>
+                        <a class="btn btn-primary" href="@Url.Action("Create", new { idSpecie = ViewBag.idSpecie })">Register New Pet</a>
                     </div>
                 }
             }
