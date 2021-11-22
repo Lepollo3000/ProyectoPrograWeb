@@ -58,6 +58,15 @@ namespace ProyectoPrograWeb.Controllers
             return View(pet);
         }
 
+        [Authorize]
+        public ActionResult RequestDetails(int idRequest)
+        {
+            var request = _dbcontext.VAdoptionUsers
+                .Where(r => r.IdAdoptionRequest == idRequest).FirstOrDefault();
+
+            return View(request);
+        }
+
         // GET: MascotasController/Create
         public ActionResult Create(int idSpecie)
         {

@@ -1,0 +1,117 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@model ProyectoPrograWeb.Models.VAdoptionUser
+@{
+    ViewData["Title"] = "Request Details";
+}
+@section Css {
+    <link href="~/css/adopStyle.css" rel="stylesheet" />
+}
+@section Scripts {
+    <script>
+        let acceptAdoption = "@Url.Action("AcceptAdoption")";
+        let cancelAdoption = "@Url.Action("CancelAdoption")";
+        let adoptionConfirm = "@Url.Action("AdoptionConfirm")"
+    </script>
+    <script src="~/js/requestDetails.js"></script>
+}
+
+<div class="details-body">
+    <div class="row">
+        <div class="col">
+            <div class="bg-white">
+                <div class="row justify-content-center">
+                    <div class="col mt-5">
+                        <h4 class="text-center namePet"><b>@Model.NamePet</b></h4>
+
+                        <img src="@Model.PhotoPathPet" class="img-fluid btnImage center" alt="image of pet" style="width:80%;" />
+                    </div>
+
+                    <div class="col-8 mt-5">
+                        <div class="row justify-content-end">
+                            <div class="col">
+                                <h5><b>Candidate:</b></h5>
+
+                                <div class="text-black-50">
+                                    <h3>
+                                        @Model.FirstName @Model.LastName
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <h5><b>Phone Number:</b></h5>
+
+                                <div class="text-black-50">
+                                    <h5>
+                                        @Model.CellphoneUser
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div>
+                                <h5><b>Email:</b></h5>
+
+                                <div class="text-black-50">
+                                    <h5>
+                                        @Model.Email
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div>
+                                <h5><b>Reason of adoption:</b></h5>
+
+                                <div class="text-black-50">
+                                    <h5>
+                                        @Model.ReasonAdoption
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div>
+                                <h5><b>Where and with whom it will live:</b></h5>
+
+                                <div class="text-black-50">
+                                    <h5>
+                                        @Model.WhereWhoAdoption
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row justify-content-center">
+                <div class="d-inline-flex">
+                    <button class="btn btn-success acceptAdoption mx-1" idPet="@Model.IdPet" namePet="@Model.NamePet" idRequest="@Model.IdAdoptionRequest">
+                        <i class="fa fa-thumbs-up"></i> Accept Adoption
+                    </button>
+                    <button class="btn btn-danger cancelAdoption mx-1" idPet="@Model.IdPet" namePet="@Model.NamePet" idRequest="@Model.IdAdoptionRequest">
+                        <i class="fa fa-thumbs-down"></i> Decline Adoption
+                    </button>
+                </div>
+
+                <a class="btn btn-primary" href="@Url.Action("AdoptionConfirm")">Go back to list</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>

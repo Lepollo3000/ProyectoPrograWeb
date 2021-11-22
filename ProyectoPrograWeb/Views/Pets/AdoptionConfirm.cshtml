@@ -37,36 +37,37 @@
                 @{
                     foreach (var adoption in Model)
                     {
-                            <tr class="request-@adoption.IdAdoptionRequest">
-                                <td>@adoption.FirstName @adoption.LastName</td>
-                                <td>@adoption.NamePet</td>
-                                <td>@adoption.NameSpecie</td>
-                                <td>@adoption.NameBreed</td>
-                                <td>@adoption.NameSex</td>
-                                <td>@adoption.NameStatus</td>
-                                @{
-                                    if (SignInManager.IsSignedIn(User))
+                        <tr class="request-@adoption.IdAdoptionRequest">
+                            <td>@adoption.FirstName @adoption.LastName</td>
+                            <td>@adoption.NamePet</td>
+                            <td>@adoption.NameSpecie</td>
+                            <td>@adoption.NameBreed</td>
+                            <td>@adoption.NameSex</td>
+                            <td>@adoption.NameStatus</td>
+                            @{
+                                if (SignInManager.IsSignedIn(User))
+                                {
+                                    if (User.IsInRole("admin"))
                                     {
-                                        if (User.IsInRole("admin"))
-                                        {
-                                            <td class="d-inline-flex">
-                                                <button class="btn btn-success acceptAdoption mx-1" idPet="@adoption.IdPet" namePet="@adoption.NamePet" idRequest="@adoption.IdAdoptionRequest">
-                                                    <i class="fa fa-thumbs-up"></i>
-                                                </button>
-                                                <button class="btn btn-danger cancelAdoption mx-1" idPet="@adoption.IdPet" namePet="@adoption.NamePet" idRequest="@adoption.IdAdoptionRequest">
-                                                    <i class="fa fa-thumbs-down"></i>
-                                                </button>
-                                            </td>
-                                        }
-                                        else
-                                        {
-                                            <td>
-                                                <a class="btn btn-primary" href="@Url.Action("Details", new { idPet = adoption.IdPet })">Pet Details</a>
-                                            </td>
-                                        }
+                                        <td class="d-inline-flex">
+                                            <button class="btn btn-success acceptAdoption mx-1" idPet="@adoption.IdPet" namePet="@adoption.NamePet" idRequest="@adoption.IdAdoptionRequest">
+                                                <i class="fa fa-thumbs-up"></i>
+                                            </button>
+                                            <button class="btn btn-danger cancelAdoption mx-1" idPet="@adoption.IdPet" namePet="@adoption.NamePet" idRequest="@adoption.IdAdoptionRequest">
+                                                <i class="fa fa-thumbs-down"></i>
+                                            </button>
+                                            <a class="btn btn-primary" href="@Url.Action("RequestDetails", new { idRequest = adoption.IdAdoptionRequest })">Request Details</a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <a class="btn btn-primary" href="@Url.Action("Details", new { idPet = adoption.IdPet })">Pet Details</a>
+                                        </td>
                                     }
                                 }
-                            </tr>
+                            }
+                        </tr>
                     }
                 }
             </tbody>
